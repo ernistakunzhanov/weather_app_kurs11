@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:weather_app_kurs/app/constants/color/app_colors.dart';
+import 'package:weather_app_kurs/app/constants/decoration/app_decoration.dart';
+import 'package:weather_app_kurs/app/constants/text_style/app_text_style.dart';
 
 class SearchView extends StatelessWidget {
   SearchView({super.key});
@@ -15,12 +18,7 @@ class SearchView extends StatelessWidget {
         child: Container(
           height: size.height * 1,
           width: size.width * 1,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/scale_1200.webp'),
-              fit: BoxFit.cover,
-            ),
-          ),
+          decoration: AppDecoration.screenDecoration,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +34,7 @@ class SearchView extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 30),
                     decoration: InputDecoration(
-                      prefixIcon: Padding(
+                      prefixIcon: const Padding(
                         padding: EdgeInsets.only(top: 15),
                         child: Icon(
                           Icons.search,
@@ -44,42 +42,38 @@ class SearchView extends StatelessWidget {
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.black,
+                        borderSide: const BorderSide(
+                          color: AppColors.black,
                           width: 3,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white, width: 2),
+                        borderSide:
+                            const BorderSide(color: AppColors.white, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
                 ),
                 Material(
-                  color: Colors.transparent,
+                  color: AppColors.transparent,
                   child: Ink(
-                    color: Colors.blue,
+                    color: AppColors.blue,
                     child: InkWell(
-                      splashColor: Colors.grey,
+                      splashColor: AppColors.grey,
                       onTap: () {
                         FocusManager.instance.primaryFocus?.unfocus();
                         Navigator.pop(context, text);
                         log('control ==> $text');
                       },
                       child: Container(
-                        decoration: BoxDecoration(
-                            // color: Colors.greenAccent,
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
+                        decoration: AppDecoration.buttonDecor,
+                        child: const Padding(
+                          padding: EdgeInsets.all(15.0),
                           child: Text(
                             'Aba yrayin tap',
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700),
+                            style: AppTextStyle.black30w700,
                           ),
                         ),
                       ),

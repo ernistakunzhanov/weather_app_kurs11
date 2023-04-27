@@ -1,12 +1,14 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_app_kurs/constants/api_key.dart';
-import 'package:weather_app_kurs/utils/weather_util.dart';
-import 'package:weather_app_kurs/views/search_view.dart';
+import 'package:weather_app_kurs/app/constants/api_key.dart';
+import 'package:weather_app_kurs/app/constants/color/app_colors.dart';
+import 'package:weather_app_kurs/app/constants/decoration/app_decoration.dart';
+import 'package:weather_app_kurs/app/constants/text_style/app_text_style.dart';
+import 'package:weather_app_kurs/app/utils/weather_util.dart';
+import 'package:weather_app_kurs/app/views/search_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -113,20 +115,15 @@ class _HomeViewState extends State<HomeView> {
         body: Container(
           height: size.height * 1,
           width: size.width * 1,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/weather.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
+          decoration: AppDecoration.screenDecoration,
           child: Stack(
             children: [
               TextButton(
                 onPressed: () {},
-                child: Icon(
+                child: const Icon(
                   Icons.location_on,
                   size: 60,
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
               ),
               Positioned(
@@ -142,10 +139,10 @@ class _HomeViewState extends State<HomeView> {
                     await getWeatherByCityName(weatherResult);
                     setState(() {});
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.location_city,
                     size: 60,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
               ),
@@ -154,7 +151,7 @@ class _HomeViewState extends State<HomeView> {
                 left: 20,
                 child: Text(
                   '$temp ℃ ',
-                  style: TextStyle(fontSize: 50, color: Colors.black),
+                  style: AppTextStyle.black80,
                 ),
               ),
               Positioned(
@@ -164,7 +161,7 @@ class _HomeViewState extends State<HomeView> {
                   '''$description
 ''',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 40, color: Colors.black),
+                  style: AppTextStyle.black40,
                 ),
               ),
               Positioned(
@@ -172,15 +169,15 @@ class _HomeViewState extends State<HomeView> {
                 left: 170,
                 child: Text(
                   '$icon',
-                  style: TextStyle(fontSize: 70, color: Colors.yellow),
+                  style: AppTextStyle.yellow70,
                 ),
               ),
-              Positioned(
+              const Positioned(
                 top: 430,
                 right: 0,
                 child: Text(
                   '🧣 🧤',
-                  style: TextStyle(fontSize: 60, color: Colors.white),
+                  style: AppTextStyle.white60,
                 ),
               ),
               Positioned(
@@ -188,10 +185,7 @@ class _HomeViewState extends State<HomeView> {
                 left: 50,
                 child: Text(
                   cityName,
-                  style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white),
+                  style: AppTextStyle.white40w800,
                 ),
               ),
             ],
